@@ -1,0 +1,97 @@
+简介:
+	php支持9种原始数据类型
+		标量类型:
+			bool
+			int
+			float/double
+			string
+		复核类型
+			array
+			object
+			callable(可调用)
+		特殊类型
+			resource(资源)
+			NULL(无资源)
+		伪类型
+			mixed(混合类型)
+			number(数字类型)
+			callback(回调类型)
+			array|object(数组|对象)
+			void(无类型)
+		伪变量
+	
+	Object(对象)
+		其他类型转为对象会创建一个内置类stdClass ,该值为 NULL 则新实例为空。array转为obj使键名成为属性名对应的值
+	
+	Boole(布尔值)
+		指定boole值使用 true和false常量，不区分大小写
+		要判断是否是boole值可以直接使用，运算符返回的结果可以传给控制流程
+			if($str){ return true; } 
+		转换boole值:
+			可以使用boole/boolean强制转换，但很多情况下不需要转换因为当运算符，函数，控制流程需要一个bool值会自动转换
+		转换为boole值以下值会默认为false	
+			false、0、0.0、空字符、"0"字符串、空的array、NULL、未赋值的变量、空标记生成的 SimpleXML 变量
+		
+	Int(整型)
+		整性可以使用十进制，8进制0，16进制0x、2进制0b
+		boole值转换: 0 为false 1为 true
+	
+	Float(浮点)
+		floor((0.1+0.7)*10) 通常会返回 7 而不是预期中的 8，所以不要相信浮点数结果精确到最后一位。
+		如果使用更高精度的应该使用bc数学和gmp函数
+		比较: 要测试浮点数是否相等，要使用一个仅比该数值大一丁点的最小误差值.
+		$a = 1.23456789;
+		$b = 1.23456780;
+		$epsilon = 0.00001;
+		if(abs($a-$b) < $epsilon) {echo "true";}
+	
+	String(字符串 2GB)
+		一个字符串 string 就是由一系列的字符组成，其中每个字符等同于一个字节。这意味着 PHP 只能支持 256 的字符集，因此不支持 Unicode
+		四种表达方式:
+			单引号: 
+				要表达一个 ' 需要加上 \  例如: \'
+				要表达一个\  需要加上 \\ 例如: \\\
+				单引号中的变量和转义字段将不会被替换
+			双引号:
+				如果字符串包围在 "" 中 PHP会对一些特殊字符进行解析
+					\n	换行（ASCII 字符集中的 LF 或 0x0A (10)）
+					\r	回车（ASCII 字符集中的 CR 或 0x0D (13)）
+					\t	水平制表符（ASCII 字符集中的 HT 或 0x09 (9)）
+					\v	垂直制表符（ASCII 字符集中的 VT 或 0x0B (11)）（自 PHP 5.2.5 起）
+					\e	Escape（ASCII 字符集中的 ESC 或 0x1B (27)）（自 PHP 5.4.0 起）
+					\f	换页（ASCII 字符集中的 FF 或 0x0C (12)）（自 PHP 5.2.5 起）
+					\\	反斜线
+					\$	美元标记
+					\"	双引号
+					\[0-7]{1,3}	符合该正则表达式序列的是一个以八进制方式来表达的字符
+					\x[0-9A-Fa-f]{1,2}	符合该正则表达式序列的是一个以十六进制方式来表达的字符
+	
+			Heredoc风格输出
+				echo <<<EOD
+					Example of string spanning multiple lines using heredoc syntax.
+				EOD;
+	
+	Array(数组)
+		PHP的数组实际上是有序映射，把value关联到key。此类型做了很多优化为实现队列、栈、hash、字典、集合提供了更多可能性
+		定义数组:
+			$arr = array() >5.4 $arr = []
+			key 可以是int或string，所以不区分关联或索引数组，value可以是任易类型
+		key的强制转换包含如下:
+			合法int类型的字符串会转为int类型: "8"=8 1.5=1 true=1
+		单元覆盖:
+			当键名相同时最后一个键名的键值对会覆盖之前的值
+		索引值:
+			当未指定key时key将使用之前最大的key值+1作为新的键名
+		访问数组
+			可以使用 $arr{0} $arr[0] 来访问 array() array[] 的数组
+		数组解引用
+			function getarray(return array('a','b','c'));
+			$arr = getarray()[0];	// echo $arr; 'a';
+		删除数组元素
+			使用unset() 	删除数组元素不会重建索引
+			array_values()	删除之后重建索引
+		
+	Resource(资源类型)
+		resource是一种特殊变量，保存了到外部的资源的一个引用，入打开文件，数据库连接等特殊句柄
+		php 通过 引用技术来释放资源，所以基本不需要手动释放
+		

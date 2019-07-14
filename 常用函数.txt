@@ -1,0 +1,152 @@
+验证变量
+	isset()					验证变量是否设置并且非NULL
+	empty()					验证变量是否为空,如果为空返回true;0，"", 0.0, null, false等都会认为是空的
+
+
+数组函数
+	array_intersect()		比较数组的交集
+	array_diff()			比较数组的差集
+	array_merge()			合并数组
+	array_unique()			删除数组的重复值
+	array_push()			在数组末尾加入元素(入栈)
+	array_unshift()			在数组开头增加一个元素
+	array_shift()			删除数组第一个元素
+	array_pop()				删除数组最后一个元素
+	array_keys()			取出数组的K值
+	array_values()			取出数组的V值
+	array_walk()			对数组的每个元素使用自定义函数进行回调、改变原有函数
+	array_map()				为每个函数应用回调，返回新数组、不改变原有函数
+	call_user_func_array()	调用回调函数，并把一个数组参数作为回调函数的参数
+	in_array()				判断指定元素是否在数组内
+	count()					取出数组的数量
+	array_key_exists()		判断数组的某个键是否存在
+	array_filter()			指定函数过滤数组
+	array_search()			搜索某个键值并返回
+	current()				当前元素值
+	next()					下一个元素值
+	reset()					重置数组内部指针
+	end()					将数组内部指针指向最后一个单元
+	parse_url()				解析整段url并返回数组  9.30
+	max()					找出数组最大值
+	min()					找出数组最小值
+	ksort()					对数组按照键名排序
+	array_reverse()			颠倒数组
+
+字符串与整数函数
+	strlen()		获取字符串长度
+	mb_str()		查找指定字符编码的字符串长度
+	strstr()		查找字符串第一次出现的位置、返回之后的字符串
+	strpos()		查找字符串第一次出现的位置、返回字节的位置
+	strrpos()		查找字符串第一次出现的位置、返回真实的位置
+	substr()		获取字符串一部分
+	str_replace()	替换字符串
+	str_repeat()	重复字符串
+	str_shuffle()	打乱字符串
+	sprintf()		字符串格式化
+	is_string()		检测是否是字符串
+	addslashes()	转义
+	explode()		将字符串打散为数组
+	implode()		将数组元素组合为字符串
+	preg_match()	匹配正则模式
+	preg_replace()	执行一个正则的替换
+	preg_split()	通过正则表达式分离字符串为数组
+	strtolower()	转小写
+	strtoupper()	转大写
+	ltrim()			删除字符串左侧的空格
+	rtrim()			删除字符串末端的空格、或其他字符
+	trim()			删除字符串两端的空格
+	call_user_func()指定参数回调
+	is_int()		检测参数是否是整数
+	ucfirst()		将首字母转为大写
+	intval()		获取字符串的整形值，默认10进制
+	round()			向上取整
+	floor()			向下取整
+	ceil()			进一取整法
+	chr()			从ASCll码返回字符
+	strrev()		颠倒字符串
+
+文件处理
+	file_exists()		检测文件或目录是否存在
+	file_get_content()	将文件的内容打包一个字符串
+	dirname()			返回去掉最后一个目录或者文件的目录
+	is_dir()			检查文件或目录是否是目录
+	unlink()			删除文件
+	basename()			返回文件完整路径的文件名
+	realpath()			返回绝对路径
+	fopen()				打开文件
+	fclose()			关闭文件
+	is_file()			判断文件名是否是正常的文件
+	make()				创建目录
+
+类与方法
+	class_name()		获取类名
+	class_class()		检测类名是否存在
+	method_exists()		检测类的方法是否存在
+	function_exists()	检测函数是否存在
+	is_object()			检测是否是对象
+	
+编码
+	serialize() 	序列化
+	unserialize()	反序列
+	json_encode()	将数组格式转为json格式'
+	json_decode()	将json格式转为数组格式
+	urlencode()		编码url字符串
+	urldecode()		解码url字符串
+
+HTTP
+	header()	发送原生http头
+	
+时间
+	date()		格式化日期
+	microtime()	unix时间戳和微妙数
+	time()		返回当前unix时间戳
+	strtotime()	将字符串日期时间戳转为unix时间戳
+	
+变量常量
+	is_bool()				检测变量是否是布尔型
+	is_null()				检测变量是否是null
+	define()				定义常量
+	defined()				检查常量是否定义
+	gettype()				获取变量类型(使用is_type来代替)
+	is_type()				判断变量类型
+	
+超全局变量	
+	PHP_VERSION				返回PHP版本
+	version_compare()		对比PHP版本
+	global $var				全局变量
+	$GLOBAL					全局变量数组
+	$_SERVER['REMOTE_ADDR'] 返回客户端IP
+	$_SERVER['SERVER_ADDR'] 返回服务器IP
+	$_SERVER['PHP_SELF']	返回当前带目录的脚本名
+	
+session 与 cookie
+	session_name()	当前会话名称
+	session_id()	当前会话ID
+	session_start()	开启会话
+	setcookie(session_name(), session_id(), time()+3600, '/')	设置session过期时间
+	
+引入文件
+	include()	引入文件，如果被包含文件有错误则继续输出，并且提示一个错误，有返回
+	require()	引入文件，如果被包含文件有错误则中止输出，提示错误，没有返回
+
+语句
+	goto loop	跳转到特定位置继续执行代码
+	
+错误与异常处理
+	error_reporting()			设置错误级别
+	set_error_handler("func")	设置自定义错误
+	func("级别", "信息", "可选文件名", "可选行数") {}
+	try {} catch() {} finally() {}
+	
+缓冲
+	ob_start()			打开缓冲器
+	
+配置
+	ini_get()			获取配置信息
+	ini_set()			为配置选项设置新的值
+	error_reporting()	设置错误级别
+
+可变函数
+	php支持将字符串作为函数名查找
+	$foo = 'function';
+	$foo();	那么php会查找function函数
